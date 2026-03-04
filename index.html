@@ -1,0 +1,1859 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forró Haus — Somos o Movimento</title>
+    <meta name="description" content="Infraestrutura cultural a serviço da sociedade. Forró Haus constrói pontes entre artistas, comunidades e territórios através da música e dos encontros reais.">
+    <link rel="icon" type="image/webp" href="images/logo.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green: #528255;
+            --green-light: #6a9e6d;
+            --yellow: #ffed62;
+            --yellow-warm: #f5d93a;
+            --red: #ff5444;
+            --red-dark: #e0392b;
+            --orange: #ff9251;
+            --blue: #32c5ff;
+            --purple: #dd7afa;
+            --sand: #fafafa;
+            --sand-warm: #f5f5f0;
+            --dark: #1a1a1a;
+            --text: #333;
+            --text-light: #555;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: 'Barlow', sans-serif;
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--dark);
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+        img { max-width: 100%; height: auto; display: block; }
+        a { color: inherit; text-decoration: none; }
+
+        h1, h2, h3, h4 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.01em;
+        }
+        .section-label {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--green);
+            margin-bottom: 0.75rem;
+        }
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        section { position: relative; overflow: hidden; }
+        section .container { position: relative; z-index: 5; }
+
+        /* ===== LANGUAGE SWITCHER ===== */
+        .lang-switcher {
+            display: flex;
+            gap: 0.25rem;
+            align-items: center;
+            margin-left: 1rem;
+            border-left: 1px solid rgba(0,0,0,0.1);
+            padding-left: 1rem;
+        }
+        .lang-switcher button {
+            background: none;
+            border: 1px solid transparent;
+            cursor: pointer;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-light);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        .lang-switcher button:hover { color: var(--green); }
+        .lang-switcher button.active {
+            color: var(--green);
+            border-color: var(--green);
+            background: rgba(82,130,85,0.08);
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        header.scrolled {
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+        }
+        .header-inner {
+            max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 70px;
+        }
+        .logo { display: flex; align-items: center; gap: 0.75rem; }
+        .logo img { height: 50px; }
+        .logo-text {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600;
+            font-size: 1.15rem;
+            color: var(--dark);
+            letter-spacing: 0.03em;
+        }
+        nav { display: flex; gap: 1.5rem; align-items: center; }
+        nav a {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 0.9rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.08em;
+            color: var(--text); transition: color 0.2s;
+        }
+        nav a:hover { color: var(--green); }
+        .mobile-toggle {
+            display: none; background: none; border: none; cursor: pointer;
+            width: 28px; height: 20px; position: relative;
+        }
+        .mobile-toggle span {
+            display: block; width: 100%; height: 2px;
+            background: var(--dark); position: absolute; left: 0;
+            transition: all 0.3s ease;
+        }
+        .mobile-toggle span:nth-child(1) { top: 0; }
+        .mobile-toggle span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+        .mobile-toggle span:nth-child(3) { bottom: 0; }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 80px 0 40px 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 1;
+        }
+        .hero-bg img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.5) 40%, rgba(82,130,85,0.55) 100%);
+            z-index: 2;
+        }
+        .hero .container {
+            position: relative;
+            z-index: 3;
+            padding-top: 100px;
+            padding-bottom: 80px;
+        }
+        .hero h1 {
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+        .hero h1 .highlight-green { color: var(--green-light); }
+        .hero h1 .highlight { color: var(--red); }
+        .hero .subline {
+            font-family: 'Caveat', cursive;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            color: var(--yellow);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        .hero-text {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+        .btn {
+            display: inline-block;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 600; font-size: 1rem;
+            letter-spacing: 0.06em; text-transform: uppercase;
+            padding: 0.85rem 2rem; border-radius: 50px;
+            border: 2px solid transparent;
+            cursor: pointer; transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background: var(--green);
+            color: #fff;
+            border-color: var(--green);
+        }
+        .btn-primary:hover {
+            background: var(--green-light);
+            border-color: var(--green-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(82,130,85,0.3);
+        }
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border-color: #fff;
+        }
+        .btn-secondary:hover {
+            background: #fff;
+            color: var(--dark);
+            transform: translateY(-2px);
+        }
+        .btn-red {
+            background: var(--red);
+            color: #fff;
+            border-color: var(--red);
+        }
+        .btn-red:hover {
+            background: var(--red-dark);
+            border-color: var(--red-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,84,68,0.3);
+        }
+        .btn-outline-dark {
+            background: transparent;
+            color: var(--dark);
+            border-color: var(--dark);
+        }
+        .btn-outline-dark:hover {
+            background: var(--dark);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+        .hero-hashtag {
+            position: absolute;
+            bottom: 3rem; right: 2rem;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            font-weight: 700;
+            color: rgba(255,255,255,0.15);
+            letter-spacing: 0.05em;
+            z-index: 3;
+        }
+
+        /* ===== ENCONTRO EM RECIFE ===== */
+        .encontro {
+            padding: 6rem 0;
+            background: #fff;
+        }
+        .encontro h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        .encontro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+        .encontro-text p {
+            font-size: 1.05rem;
+            color: var(--text);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+        .encontro-photos {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .encontro-photos img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .encontro-photos img:hover { transform: scale(1.03); }
+        .encontro-photos img:first-child {
+            grid-column: 1 / -1;
+            height: 280px;
+        }
+        .encontro-date {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(82,130,85,0.1);
+            color: var(--green);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ===== O MOVIMENTO ===== */
+        .about {
+            padding: 6rem 0;
+            background: var(--sand);
+        }
+        .about h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        .about-text p {
+            font-size: 1.05rem;
+            color: var(--text);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+        .about-text blockquote {
+            border-left: 4px solid var(--green);
+            padding: 1.25rem 1.5rem;
+            margin: 2rem 0;
+            background: rgba(82,130,85,0.05);
+            border-radius: 0 12px 12px 0;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--green);
+        }
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        /* ===== POR QUE EXISTE ===== */
+        .why {
+            padding: 6rem 0;
+            background: #fff;
+        }
+        .why h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        .why-content p {
+            font-size: 1.05rem;
+            color: var(--text);
+            line-height: 1.9;
+            max-width: 800px;
+            margin-bottom: 2.5rem;
+        }
+        .why-points {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .why-point {
+            background: var(--sand);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+        .why-point h3 {
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+        }
+        .why-point p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* ===== 5 PILARES ===== */
+        .pilares {
+            padding: 6rem 0;
+            background: var(--sand);
+        }
+        .pilares h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+        }
+        .pilares-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+        .pilar-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .pilar-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+        .pilar-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .pilar-card-body {
+            padding: 1.25rem;
+        }
+        .pilar-card h3 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            color: var(--green);
+        }
+        .pilar-card p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ===== EQUIPE ===== */
+        .equipe {
+            padding: 6rem 0;
+            background: #fff;
+        }
+        .equipe h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+        }
+        .equipe-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+        .equipe-card {
+            text-align: center;
+        }
+        .equipe-card img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+        .equipe-card:hover img { transform: scale(1.03); }
+        .equipe-card h3 {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+        .equipe-card .role {
+            font-size: 0.85rem;
+            color: var(--green);
+            font-weight: 600;
+        }
+        .equipe-card .origin {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* ===== ARTISTAS SLIDER ===== */
+        .artistas {
+            padding: 5rem 0;
+            background: var(--dark);
+            color: #fff;
+            overflow: hidden;
+        }
+        .artistas h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            text-align: center;
+        }
+        .artistas .section-subtitle {
+            text-align: center;
+            margin: 0 auto 2.5rem;
+            color: rgba(255,255,255,0.6);
+        }
+        .artistas .section-label {
+            text-align: center;
+            color: var(--yellow);
+        }
+        .slider-track {
+            display: flex;
+            gap: 1.5rem;
+            animation: slide 40s linear infinite;
+            width: max-content;
+        }
+        .slider-track:hover {
+            animation-play-state: paused;
+        }
+        .slider-item {
+            flex-shrink: 0;
+            width: 200px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+        .slider-item:hover {
+            transform: scale(1.05);
+        }
+        .slider-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ===== GALERIA ===== */
+        .galeria {
+            padding: 6rem 0;
+            background: var(--sand);
+        }
+        .galeria h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+        }
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 250px;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .galeria-grid img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .galeria-grid img:hover { transform: scale(1.03); }
+        .galeria-grid img:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+
+        /* ===== PARTICIPAR / CAMINHOS ===== */
+        .paths {
+            padding: 6rem 0;
+            background: #fff;
+        }
+        .paths h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+        }
+        .paths-intro {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        .paths-social-hint {
+            font-size: 0.95rem;
+            color: var(--green);
+            max-width: 700px;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+            font-weight: 500;
+        }
+        .paths-social-hint a {
+            color: var(--red);
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .paths-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .path-card {
+            background: var(--sand);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .path-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+        .path-icon {
+            width: 64px; height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        .path-card:nth-child(1) .path-icon { background: rgba(255,84,68,0.1); color: var(--red); }
+        .path-card:nth-child(2) .path-icon { background: rgba(82,130,85,0.1); color: var(--green); }
+        .path-card:nth-child(3) .path-icon { background: rgba(255,237,98,0.2); color: #c5a800; }
+        .path-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+        }
+        .path-card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        .path-card .btn { font-size: 0.9rem; padding: 0.7rem 1.8rem; }
+
+        /* ===== FORMULÁRIO ===== */
+        .forms {
+            padding: 6rem 0;
+            background: var(--sand);
+        }
+        .forms h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+        }
+        .form-container {
+            background: #fff;
+            border-radius: 20px;
+            padding: 2rem;
+            min-height: 400px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+
+        /* ===== DOWNLOADS ===== */
+        .downloads {
+            padding: 6rem 0;
+            background: #fff;
+        }
+        .downloads h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+        }
+        .downloads-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .download-card {
+            background: var(--sand);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease;
+        }
+        .download-card:hover { transform: translateY(-4px); }
+        .download-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .download-card-body {
+            padding: 1.25rem;
+            text-align: center;
+        }
+        .download-card h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .download-card p {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+        .downloads-cta {
+            text-align: center;
+            margin-top: 2.5rem;
+        }
+
+        /* ===== IMPRESSUM ===== */
+        .impressum {
+            padding: 4rem 0;
+            background: var(--sand);
+        }
+        .impressum h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+        .impressum-content {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            max-width: 800px;
+        }
+        .impressum-content h3 {
+            font-size: 1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--dark);
+            color: #fff;
+            padding: 4rem 0 2rem;
+        }
+        .footer-inner { text-align: center; }
+        .footer-logo img {
+            height: 60px;
+            margin: 0 auto 1.5rem;
+        }
+        .footer-hashtag {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--green);
+            margin-bottom: 1rem;
+        }
+        .footer-location {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 2rem;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+        .social-links a {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: rgba(255,255,255,0.7);
+        }
+        .social-links a:hover {
+            border-color: var(--green);
+            color: var(--green);
+            transform: translateY(-2px);
+        }
+        .social-links a svg { width: 20px; height: 20px; fill: currentColor; }
+        .footer-contact {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 1.5rem;
+        }
+        .footer-contact a {
+            color: rgba(255,255,255,0.6);
+            transition: color 0.2s;
+        }
+        .footer-contact a:hover { color: var(--green); }
+        .footer-legal {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.25);
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 1.5rem;
+        }
+        .footer-legal a {
+            color: rgba(255,255,255,0.35);
+            transition: color 0.2s;
+        }
+        .footer-legal a:hover { color: rgba(255,255,255,0.6); }
+
+        /* ===== ANIMATIONS ===== */
+        .reveal {
+            opacity: 1;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1100px) {
+            .pilares-grid { grid-template-columns: repeat(3, 1fr); }
+            .downloads-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 968px) {
+            .why-points { grid-template-columns: 1fr; }
+            .paths-grid { grid-template-columns: 1fr; }
+            .encontro-grid { grid-template-columns: 1fr; }
+            .about-content { grid-template-columns: 1fr; }
+            .pilares-grid { grid-template-columns: repeat(2, 1fr); }
+            .equipe-grid { grid-template-columns: repeat(2, 1fr); }
+            .galeria-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
+            .downloads-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            nav { display: none; }
+            nav.open {
+                display: flex; flex-direction: column;
+                position: fixed; top: 60px; left: 0; right: 0;
+                background: rgba(255,255,255,0.98);
+                backdrop-filter: blur(12px);
+                padding: 2rem; gap: 1.25rem;
+                border-bottom: 1px solid rgba(0,0,0,0.08);
+                z-index: 99;
+            }
+            .mobile-toggle { display: block; }
+            .logo-text { display: none; }
+            .lang-switcher { display: none; }
+            nav.open .lang-switcher-mobile { display: flex; justify-content: center; gap: 0.5rem; }
+            .hero { min-height: 80vh; }
+            .hero h1 { font-size: 3rem; }
+            .hero-hashtag { display: none; }
+            section { padding: 4rem 0 !important; }
+            .form-container { padding: 1rem; }
+            .pilares-grid { grid-template-columns: 1fr; }
+            .equipe-grid { grid-template-columns: repeat(2, 1fr); }
+            .slider-item { width: 150px; }
+            .slider-item img { height: 190px; }
+            .galeria-grid img:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+            .downloads-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero-cta { flex-direction: column; }
+            .hero-cta .btn { width: 100%; text-align: center; }
+        }
+    </style>
+
+    <!-- Brevo Form Styles -->
+    <style>
+      @font-face {
+        font-display: block;
+        font-family: Roboto;
+        src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff")
+      }
+      @font-face {
+        font-display: fallback;
+        font-family: Roboto;
+        font-weight: 600;
+        src: url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff) format("woff")
+      }
+      @font-face {
+        font-display: fallback;
+        font-family: Roboto;
+        font-weight: 700;
+        src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff) format("woff")
+      }
+      #sib-container input:-ms-input-placeholder { text-align: left; font-family: Helvetica, sans-serif; color: #c0ccda; }
+      #sib-container input::placeholder { text-align: left; font-family: Helvetica, sans-serif; color: #c0ccda; }
+      #sib-container textarea::placeholder { text-align: left; font-family: Helvetica, sans-serif; color: #c0ccda; }
+      #sib-container a { text-decoration: underline; color: #2BB2FC; }
+    </style>
+    <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header id="header">
+        <div class="header-inner">
+            <a class="logo" href="#" aria-label="Forró Haus">
+                <img src="images/logo_black.png" alt="Forró Haus">
+                <span class="logo-text">#somosomovimento</span>
+            </a>
+            <button class="mobile-toggle" aria-label="Menu" onclick="document.querySelector('nav').classList.toggle('open')">
+                <span></span><span></span><span></span>
+            </button>
+            <nav>
+                <a href="#encontro" data-i18n="nav_encontro">Encontro</a>
+                <a href="#sobre" data-i18n="nav_movimento">O Movimento</a>
+                <a href="#pilares" data-i18n="nav_pilares">5 Pilares</a>
+                <a href="#equipe" data-i18n="nav_equipe">Equipe</a>
+                <a href="#artistas" data-i18n="nav_artistas">Artistas</a>
+                <a href="#galeria" data-i18n="nav_galeria">Galeria</a>
+                <a href="#formularios" data-i18n="nav_participar">Participar</a>
+                <a href="#contato" data-i18n="nav_contato">Contato</a>
+                <div class="lang-switcher">
+                    <button onclick="setLang('pt')" class="active" id="lang-pt">PT</button>
+                    <button onclick="setLang('de')" id="lang-de">DE</button>
+                    <button onclick="setLang('en')" id="lang-en">EN</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <img src="images/hero_wandgemaelde.jpg" alt="Forró Haus - Somos o Movimento" style="object-position: center 40%;">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content reveal visible">
+                <div class="section-label" style="color: var(--yellow);" data-i18n="hero_label">Somos o Movimento</div>
+                <h1>Somos o<br><span class="highlight-green">Movi</span><span class="highlight">mento</span></h1>
+                <p class="subline" data-i18n="hero_subline">Infraestrutura cultural a serviço da sociedade</p>
+                <p class="hero-text" data-i18n="hero_text">
+                    Forró Haus constrói pontes entre artistas, comunidades e territórios através da música e dos encontros reais. Não somos uma plataforma. Somos um movimento de pessoas que acreditam na cultura como força transformadora.
+                </p>
+                <div class="hero-cta">
+                    <a href="#formularios" class="btn btn-primary" data-i18n="hero_btn1">Quero participar</a>
+                    <a href="#sobre" class="btn btn-secondary" data-i18n="hero_btn2">Conheça o Projeto</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-hashtag">#somosomovimento</div>
+    </section>
+
+    <!-- ===== O ENCONTRO EM RECIFE ===== -->
+    <section class="encontro" id="encontro">
+        <div class="container">
+            <div class="section-label reveal" data-i18n="encontro_label">Aconteceu</div>
+            <h2 class="reveal" data-i18n="encontro_title">1º Encontro da União dos<br>Artistas Brasileiros</h2>
+            <div class="encontro-grid">
+                <div class="encontro-text reveal">
+                    <div class="encontro-date">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        <span data-i18n="encontro_date">1 de março de 2026 — Museu Cais do Sertão, Recife</span>
+                    </div>
+                    <p data-i18n="encontro_p1">
+                        Um momento histórico para o Forró e para a cultura brasileira. No dia 1º de março de 2026, reunimos no Museu Cais do Sertão, em Recife, alguns dos mais importantes músicos de Pernambuco e do Brasil.
+                    </p>
+                    <p data-i18n="encontro_p2">
+                        Jadu, Derico, Imogen, Clara e Naize apresentaram o projeto Forró Haus, incluindo uma peça teatral sobre a visão do movimento. Cada convidado recebeu uma bolsa com camiseta e documentos do projeto. A resposta foi unânime: entusiasmo e apoio total ao movimento.
+                    </p>
+                    <p data-i18n="encontro_p3">
+                        Este encontro marca o início de uma nova era para a cultura do Forró — uma era de profissionalismo, respeito e infraestrutura a serviço dos artistas e das comunidades.
+                    </p>
+                    <a href="#formularios" class="btn btn-primary" style="margin-top: 1rem;" data-i18n="encontro_btn">Faça parte do próximo encontro</a>
+                </div>
+                <div class="encontro-photos reveal">
+                    <img src="images/event_01.jpg" alt="Encontro dos Artistas em Recife" loading="lazy">
+                    <img src="images/event_02.jpg" alt="Artistas no Museu Cais do Sertão" loading="lazy">
+                    <img src="images/event_03.jpg" alt="Apresentação do Forró Haus" loading="lazy">
+                    <img src="images/event_04.jpg" alt="Músicos apoiam o movimento" loading="lazy">
+                    <img src="images/event_05.jpg" alt="Encontro histórico" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== O MOVIMENTO ===== -->
+    <section class="about" id="sobre">
+        <div class="container">
+            <div class="about-content reveal">
+                <div class="about-text">
+                    <div class="section-label" data-i18n="about_label">O Movimento</div>
+                    <h2 data-i18n="about_title">Forró Haus</h2>
+                    <p data-i18n="about_p1">
+                        De quinze anos de organização de eventos de Forró, brotou algo maduro: uma estrutura moldada por incontáveis encontros, aprendizados e responsabilidade compartilhada. Entendemos que artistas brasileiros não precisam só de um palco; precisam de um lugar onde sejam recebidos com respeito, carinho e profissionalismo.
+                    </p>
+                    <p data-i18n="about_p2">
+                        Assim se desenvolveu nossa organização, que une coração e estrutura — o melhor que o Brasil tem a oferecer, junto do que a Alemanha tem de melhor a oferecer = Forró Haus.
+                    </p>
+                    <blockquote data-i18n="about_quote">
+                        "A Forró Haus é uma vitrine da cultura brasileira no exterior, um ecossistema único onde dança, música, gastronomia e convivência se unem."
+                    </blockquote>
+                    <p data-i18n="about_p3">
+                        Em um momento de instabilidade para a classe artística e de desconexão cultural, a Forró Haus e.V. surge como uma organização não lucrativa dedicada à criação de Centros Culturais autossustentáveis. Apresentamos um Brasil autêntico, protegendo nossa maior riqueza: o Forró e a criatividade dos Artistas.
+                    </p>
+                </div>
+                <div class="about-image">
+                    <img src="images/hero_tanzende.jpg" alt="Tanzende Menschen bei Forró Haus" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== POR QUE EXISTE ===== -->
+    <section class="why" id="porque">
+        <div class="container">
+            <div class="why-content reveal">
+                <div class="section-label" data-i18n="why_label">Por que existe</div>
+                <h2 data-i18n="why_title">Cultura precisa de<br>infraestrutura</h2>
+                <p data-i18n="why_text">
+                    Artistas que levam o forró para o mundo enfrentam condições precárias: sem estrutura, sem cachês dignos, sem suporte profissional. Comunidades que amam essa cultura muitas vezes não encontram espaços para se reunir, aprender e celebrar.
+                </p>
+            </div>
+            <div class="why-points reveal">
+                <div class="why-point">
+                    <h3 data-i18n="why_h1">Artistas sem estrutura</h3>
+                    <p data-i18n="why_p1">Músicos e artistas precisam de condições dignas de trabalho, cachês justos e suporte profissional para levar sua arte além das fronteiras.</p>
+                </div>
+                <div class="why-point">
+                    <h3 data-i18n="why_h2">Cultura precisa de base</h3>
+                    <p data-i18n="why_p2">Sem infraestrutura, a cultura fica à mercê do improviso. Forró Haus cria as condições para que a música e o encontro aconteçam com qualidade.</p>
+                </div>
+                <div class="why-point">
+                    <h3 data-i18n="why_h3">Movimento não para</h3>
+                    <p data-i18n="why_p3">Queremos construir juntos, um movimento de pessoas reais, em territórios reais, com encontros verdadeiros.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 5 PILARES ===== -->
+    <section class="pilares" id="pilares">
+        <div class="container">
+            <div class="section-label reveal" data-i18n="pilares_label">Os 5 Pilares</div>
+            <h2 class="reveal" data-i18n="pilares_title">A Estrutura do Forró Haus</h2>
+            <p class="section-subtitle reveal" data-i18n="pilares_subtitle">Cada Forró Haus é composto por cinco pilares integrados que criam um ecossistema cultural autossustentável.</p>
+            <div class="pilares-grid reveal">
+                <div class="pilar-card">
+                    <img src="images/pilar_centro.jpg" alt="Centro Cultural" loading="lazy">
+                    <div class="pilar-card-body">
+                        <h3 data-i18n="pilar_centro_h">Centro Cultural</h3>
+                        <p data-i18n="pilar_centro_p">Escola de dança, música, capoeira e atividades culturais para todas as idades.</p>
+                    </div>
+                </div>
+                <div class="pilar-card">
+                    <img src="images/pilar_eventos.jpg" alt="Casa de Eventos" loading="lazy">
+                    <div class="pilar-card-body">
+                        <h3 data-i18n="pilar_eventos_h">Casa de Eventos</h3>
+                        <p data-i18n="pilar_eventos_p">Espaço profissional para shows, festivais e encontros culturais.</p>
+                    </div>
+                </div>
+                <div class="pilar-card">
+                    <img src="images/pilar_restaurante.jpg" alt="Restaurante" loading="lazy">
+                    <div class="pilar-card-body">
+                        <h3 data-i18n="pilar_restaurante_h">Restaurante</h3>
+                        <p data-i18n="pilar_restaurante_p">Gastronomia brasileira autêntica como parte da experiência cultural.</p>
+                    </div>
+                </div>
+                <div class="pilar-card">
+                    <img src="images/pilar_pousada.jpg" alt="Pousada" loading="lazy">
+                    <div class="pilar-card-body">
+                        <h3 data-i18n="pilar_pousada_h">Pousada</h3>
+                        <p data-i18n="pilar_pousada_p">Hospedagem cultural para artistas e visitantes com conforto e acolhimento.</p>
+                    </div>
+                </div>
+                <div class="pilar-card">
+                    <img src="images/pilar_estudio.jpg" alt="Estúdio" loading="lazy">
+                    <div class="pilar-card-body">
+                        <h3 data-i18n="pilar_estudio_h">Estúdio</h3>
+                        <p data-i18n="pilar_estudio_p">Produção audiovisual, podcasts e registro da memória cultural.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EQUIPE ===== -->
+    <section class="equipe" id="equipe">
+        <div class="container">
+            <div class="section-label reveal" data-i18n="equipe_label">Nossa Equipe</div>
+            <h2 class="reveal" data-i18n="equipe_title">As pessoas por trás do movimento</h2>
+            <p class="section-subtitle reveal" data-i18n="equipe_subtitle">Uma equipe internacional unida pela paixão pela cultura brasileira.</p>
+            <div class="equipe-grid reveal">
+                <div class="equipe-card">
+                    <img src="images/team_jadu.jpg" alt="Jadu Pasqualini" loading="lazy">
+                    <h3>Jadu Pasqualini</h3>
+                    <p class="role" data-i18n="equipe_jadu_role">Fundador & Diretor</p>
+                    <p class="origin">São Paulo, Brasil</p>
+                </div>
+                <div class="equipe-card">
+                    <img src="images/team_derico.jpg" alt="Derico Alves" loading="lazy">
+                    <h3>Derico Alves</h3>
+                    <p class="role" data-i18n="equipe_derico_role">Músico & Articulador Cultural</p>
+                    <p class="origin">Recife, Brasil</p>
+                </div>
+                <div class="equipe-card">
+                    <img src="images/team_imogen.jpg" alt="Imogen Betz" loading="lazy">
+                    <h3>Imogen Betz</h3>
+                    <p class="role" data-i18n="equipe_imogen_role">Estrategista & Co-Fundadora</p>
+                    <p class="origin">Stuttgart, Alemanha</p>
+                </div>
+                <div class="equipe-card">
+                    <img src="images/team_clara.jpg" alt="Clara Kriele" loading="lazy">
+                    <h3>Clara Kriele</h3>
+                    <p class="role" data-i18n="equipe_clara_role">Terapeuta & Co-Fundadora</p>
+                    <p class="origin">Bonn, Alemanha</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ARTISTAS QUE APOIAM ===== -->
+    <section class="artistas" id="artistas">
+        <div class="container">
+            <div class="section-label reveal" data-i18n="artistas_label">Apoio dos Artistas</div>
+            <h2 class="reveal" data-i18n="artistas_title">Artistas que Apoiam o Movimento</h2>
+            <p class="section-subtitle reveal" data-i18n="artistas_subtitle">Músicos e artistas de todo o Brasil que acreditam na nossa visão e apoiam o Forró Haus.</p>
+        </div>
+        <div class="slider-track">
+            <div class="slider-item"><img src="images/Post_ScurinhoZabumbada.png" alt="Scurinho Zabumbada" loading="lazy"></div>
+            <div class="slider-item"><img src="images/Post_DeusadoForro.png" alt="Deusa do Forró" loading="lazy"></div>
+            <div class="slider-item"><img src="images/Post_SantannaoCantador.png" alt="Santanna o Cantador" loading="lazy"></div>
+            <div class="slider-item"><img src="images/Post_NonatoLima.png" alt="Nonato Lima" loading="lazy"></div>
+            <div class="slider-item"><img src="images/Post_DedaSilva.png" alt="Deda Silva" loading="lazy"></div>
+            <div class="slider-item"><img src="images/Post_PetrucioAmorim.png" alt="Petrúcio Amorim" loading="lazy"></div>
+            <div class="slider-item"><img src="images/Post_HedranBaretto.png" alt="Hedran Baretto" loading="lazy"></div>
+            <div class="slider-item"><img src="images/Post_ChiquinhoAlves.png" alt="Chiquinho Alves" loading="lazy"></div>
+            <div class="slider-item"><img src="images/Post_TherezinhadoAcordeom.png" alt="Therezinha do Acordeom" loading="lazy"></div>
+            <div class="slider-item"><img src="images/Post_Mestrinho.png" alt="Mestrinho" loading="lazy"></div>
+            <div class="slider-item"><img src="images/Post_QuintetoViolado.png" alt="Quinteto Violado" loading="lazy"></div>
+            <!-- Duplicated for infinite scroll -->
+            <div class="slider-item"><img src="images/Post_ScurinhoZabumbada.png" alt="Scurinho Zabumbada" loading="lazy"></div>
+            <div class="slider-item"><img src="images/Post_DeusadoForro.png" alt="Deusa do Forró" loading="lazy"></div>
+            <div class="slider-item"><img src="images/Post_SantannaoCantador.png" alt="Santanna o Cantador" loading="lazy"></div>
+            <div class="slider-item"><img src="images/Post_NonatoLima.png" alt="Nonato Lima" loading="lazy"></div>
+            <div class="slider-item"><img src="images/Post_DedaSilva.png" alt="Deda Silva" loading="lazy"></div>
+            <div class="slider-item"><img src="images/Post_PetrucioAmorim.png" alt="Petrúcio Amorim" loading="lazy"></div>
+            <div class="slider-item"><img src="images/Post_HedranBaretto.png" alt="Hedran Baretto" loading="lazy"></div>
+            <div class="slider-item"><img src="images/Post_ChiquinhoAlves.png" alt="Chiquinho Alves" loading="lazy"></div>
+            <div class="slider-item"><img src="images/Post_TherezinhadoAcordeom.png" alt="Therezinha do Acordeom" loading="lazy"></div>
+            <div class="slider-item"><img src="images/Post_Mestrinho.png" alt="Mestrinho" loading="lazy"></div>
+            <div class="slider-item"><img src="images/Post_QuintetoViolado.png" alt="Quinteto Violado" loading="lazy"></div>
+        </div>
+    </section>
+
+    <!-- ===== GALERIA ===== -->
+    <section class="galeria" id="galeria">
+        <div class="container">
+            <div class="section-label reveal" data-i18n="galeria_label">Galeria</div>
+            <h2 class="reveal" data-i18n="galeria_title">Encontros que Transformam</h2>
+            <p class="section-subtitle reveal" data-i18n="galeria_subtitle">Momentos reais de música, dança e comunidade na Forró Haus.</p>
+            <div class="galeria-grid reveal">
+                <img src="images/galeria_community_01.jpg" alt="Comunidade Forró Haus" loading="lazy">
+                <img src="images/galeria_02.jpg" alt="Música ao vivo" loading="lazy">
+                <img src="images/galeria_06.jpg" alt="Shows na Forró Haus" loading="lazy">
+                <img src="images/galeria_community_02.jpg" alt="Comunidade" loading="lazy">
+                <img src="images/galeria_04.jpg" alt="Concerto" loading="lazy">
+                <img src="images/galeria_community_03.jpg" alt="Dança" loading="lazy">
+            </div>
+            <div style="text-align: center; margin-top: 2.5rem;" class="reveal">
+                <a href="https://www.instagram.com/forrohaus" target="_blank" rel="noopener noreferrer" class="btn btn-outline-dark" data-i18n="galeria_btn">Veja mais no Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TRÊS CAMINHOS ===== -->
+    <section class="paths" id="caminhos">
+        <div class="container">
+            <div class="section-label reveal" data-i18n="paths_label">Três caminhos para participar</div>
+            <h2 class="reveal" data-i18n="paths_title">Faça parte do movimento</h2>
+            <p class="paths-intro reveal" data-i18n="paths_intro">Escolha como você quer se conectar com o Forró Haus</p>
+            <p class="paths-social-hint reveal" data-i18n-html="paths_social">Siga-nos nas redes sociais e ajude-nos a construir um Forró Haus também na sua cidade! <a href="https://www.instagram.com/forrohaus" target="_blank" rel="noopener noreferrer">@forrohaus</a></p>
+            <div class="paths-grid reveal">
+                <div class="path-card">
+                    <div class="path-icon">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                    </div>
+                    <h3 data-i18n="path_artistas_h">Artistas</h3>
+                    <p data-i18n="path_artistas_p">Você é músico, dançarino ou produtor? Descubra como o Forró Haus oferece estrutura, cachês dignos e suporte profissional para levar sua arte para o mundo.</p>
+                    <a href="#formularios" class="btn btn-red" data-i18n="path_artistas_btn">Saber mais</a>
+                </div>
+                <div class="path-card">
+                    <div class="path-icon">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3 data-i18n="path_parceiros_h">Parceiros & Cidades</h3>
+                    <p data-i18n="path_parceiros_p">Investidores, gestores públicos e comunidades: vamos construir juntos um Forró Haus em sua região. Conheça as oportunidades de parceria.</p>
+                    <a href="#formularios" class="btn btn-primary" data-i18n="path_parceiros_btn">Participar</a>
+                </div>
+                <div class="path-card">
+                    <div class="path-icon">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    </div>
+                    <h3 data-i18n="path_comunidade_h">Comunidade</h3>
+                    <p data-i18n="path_comunidade_p">Dançarinos, forrozeiros e curiosos: fique por dentro do movimento, receba novidades e descubra como participar dos nossos encontros e eventos.</p>
+                    <a href="#formularios" class="btn btn-outline-dark" data-i18n="path_comunidade_btn">Participar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FORMULÁRIO ===== -->
+    <section class="forms" id="formularios">
+        <div class="container">
+            <div class="section-label reveal" data-i18n="form_label">Fique por dentro</div>
+            <h2 class="reveal" data-i18n="form_title">Faça parte do #somosomovimento</h2>
+            <p class="section-subtitle reveal" data-i18n-html="form_subtitle">Deixe seus dados para receber novidades sobre o movimento, próximos encontros e oportunidades. Ou entre em contato pelo WhatsApp: <a href="https://wa.me/5581996281332" style="color:#2d6a4f; font-weight:700;">+55 81 99628-1332</a></p>
+            <div class="form-container reveal">
+                <!-- START - Brevo Form: Participe do Movimento -->
+<div class="sib-form" style="text-align: center; background-color: #EFF2F7;">
+  <div id="sib-form-container" class="sib-form-container">
+    <div id="error-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;max-width:540px;">
+      <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+        <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
+          <path d="M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z" />
+        </svg>
+        <span class="sib-form-message-panel__inner-text">
+          Não foi possível salvar seu cadastro. Por favor, tente novamente.
+        </span>
+      </div>
+    </div>
+    <div></div>
+    <div id="success-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#085229; background-color:#e7faf0; border-radius:3px; border-color:#13ce66;max-width:540px;">
+      <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+        <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
+          <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z" />
+        </svg>
+        <span class="sib-form-message-panel__inner-text">
+          Sua mensagem foi enviada com sucesso! Entraremos em contato em breve.
+        </span>
+      </div>
+    </div>
+    <div></div>
+    <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center; background-color:rgba(255,255,255,1); max-width:540px; border-radius:3px; border-width:1px; border-color:#C0CCD9; border-style:solid; direction:ltr">
+      <form id="sib-form" method="POST" action="https://7ef2a868.sibforms.com/serve/MUIFAJ9RO9a7UpWllSU4DA4l7NOGZJ25WvOcI0G-c4mgTvzgYmzlnC-63hbA4xBjh4aMKXABeU-eAHFofKNCIK3ElFPAoRlEGH2msPAwWGyw5gsjtvRx36YF6o1RNt3mhMqYboyPsRffaFp29NClHkXcj9g1N0HbPaH_W1Fxaqk52a2r6fGEgUfhl_m19OEy7PyfAp6J6c2-E6zW" data-type="subscription">
+        <div style="padding: 8px 0;">
+          <div class="sib-form-block" style="font-size:22px; text-align:left; font-weight:700; font-family:Helvetica, sans-serif; color:#3C4858; background-color:transparent; text-align:left">
+            <p>Participe do Movimento</p>
+          </div>
+        </div>
+        <div style="padding: 8px 0;">
+          <div class="sib-form-block" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#3C4858; background-color:transparent; text-align:left">
+            <div class="sib-text-form-block">
+              <p>Quer fazer parte da construção do Forró H.A.U.S. e fortalecer a cultura do forró? Preencha o formulário abaixo e nos diga como você gostaria de se envolver.</p>
+            </div>
+          </div>
+        </div>
+        <div style="padding: 8px 0;">
+          <div class="sib-input sib-form-block">
+            <div class="form__entry entry_block">
+              <div class="form__label-row ">
+                <div class="entry__field">
+                  <input class="input " maxlength="200" type="text" id="NACHNAME" name="NACHNAME" autocomplete="off" placeholder="SOBRENOME" data-required="true" required />
+                </div>
+              </div>
+              <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+            </div>
+          </div>
+        </div>
+        <div style="padding: 8px 0;">
+          <div class="sib-input sib-form-block">
+            <div class="form__entry entry_block">
+              <div class="form__label-row ">
+                <div class="entry__field">
+                  <input class="input " maxlength="200" type="text" id="VORNAME" name="VORNAME" autocomplete="off" placeholder="NOME" data-required="true" required />
+                </div>
+              </div>
+              <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+            </div>
+          </div>
+        </div>
+        <div style="padding: 8px 0;">
+          <div class="sib-input sib-form-block">
+            <div class="form__entry entry_block">
+              <div class="form__label-row ">
+                <div class="entry__field">
+                  <input class="input " type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="EMAIL" data-required="true" required />
+                </div>
+              </div>
+              <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+            </div>
+          </div>
+        </div>
+        <div style="padding: 8px 0;">
+          <div class="sib-input sib-form-block">
+            <div class="form__entry entry_block">
+              <div class="form__label-row ">
+                <div class="entry__field">
+                  <input class="input " maxlength="200" type="text" id="NOME_ARTISTICO" name="NOME_ARTISTICO" autocomplete="off" placeholder="NOME ARTISTICO (SE APLICÁVEL)" />
+                </div>
+              </div>
+              <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+            </div>
+          </div>
+        </div>
+        <div style="padding: 8px 0;">
+          <div class="sib-input sib-form-block">
+            <div class="form__entry entry_block">
+              <div class="form__label-row ">
+                <div class="entry__field">
+                  <input class="input " maxlength="200" type="text" id="CIDADE" name="CIDADE" autocomplete="off" placeholder="CIDADE" data-required="true" required />
+                </div>
+              </div>
+              <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+            </div>
+          </div>
+        </div>
+        <div style="padding: 8px 0;">
+          <div class="sib-checkbox-group sib-form-block" data-required="true">
+            <div class="form__entry entry_mcq">
+              <div class="form__label-row ">
+                <label class="entry__label" style="font-weight: 700; text-align:left; font-size:16px; font-weight:700; font-family:Helvetica, sans-serif; color:#3c4858;" data-required="*">Como você quer participar?</label>
+                <div style="">
+                  <div class="entry__choice">
+                    <label class="checkbox__label">
+                      <input type="checkbox" class="input_replaced" name="INTERESSE[]" data-value="Artista (músico, compositor, etc.)" value="Artista (músico, compositor, etc.)" data-required="true" />
+                      <span class="checkbox checkbox_tick_positive" style="margin-left:"></span><span style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#3C4858; background-color:transparent;">Artista (músico, compositor, etc.)</span>
+                    </label>
+                  </div>
+                  <div class="entry__choice">
+                    <label class="checkbox__label">
+                      <input type="checkbox" class="input_replaced" name="INTERESSE[]" data-value="Dançarino(a) ou professor(a) de dança" value="Dançarino(a) ou professor(a) de dança" data-required="true" />
+                      <span class="checkbox checkbox_tick_positive" style="margin-left:"></span><span style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#3C4858; background-color:transparent;">Dançarino(a) ou professor(a) de dança</span>
+                    </label>
+                  </div>
+                  <div class="entry__choice">
+                    <label class="checkbox__label">
+                      <input type="checkbox" class="input_replaced" name="INTERESSE[]" data-value="Construir um Forró Haus na minha cidade" value="Construir um Forró Haus na minha cidade" data-required="true" />
+                      <span class="checkbox checkbox_tick_positive" style="margin-left:"></span><span style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#3C4858; background-color:transparent;">Construir um Forró Haus na minha cidade</span>
+                    </label>
+                  </div>
+                  <div class="entry__choice">
+                    <label class="checkbox__label">
+                      <input type="checkbox" class="input_replaced" name="INTERESSE[]" data-value="Investidor(a) ou patrocinador(a)" value="Investidor(a) ou patrocinador(a)" data-required="true" />
+                      <span class="checkbox checkbox_tick_positive" style="margin-left:"></span><span style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#3C4858; background-color:transparent;">Investidor(a) ou patrocinador(a)</span>
+                    </label>
+                  </div>
+                  <div class="entry__choice">
+                    <label class="checkbox__label">
+                      <input type="checkbox" class="input_replaced" name="INTERESSE[]" data-value="Parceiro(a) estratégico(a)" value="Parceiro(a) estratégico(a)" data-required="true" />
+                      <span class="checkbox checkbox_tick_positive" style="margin-left:"></span><span style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#3C4858; background-color:transparent;">Parceiro(a) estratégico(a)</span>
+                    </label>
+                  </div>
+                  <div class="entry__choice">
+                    <label class="checkbox__label">
+                      <input type="checkbox" class="input_replaced" name="INTERESSE[]" data-value="Apoiador(a) do movimento" value="Apoiador(a) do movimento" data-required="true" />
+                      <span class="checkbox checkbox_tick_positive" style="margin-left:"></span><span style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#3C4858; background-color:transparent;">Apoiador(a) do movimento</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+            </div>
+          </div>
+        </div>
+        <div style="padding: 8px 0;">
+          <div class="sib-optin sib-form-block" data-required="true">
+            <div class="form__entry entry_mcq">
+              <div class="form__label-row ">
+                <label class="entry__label" style="font-weight: 700; text-align:left; font-size:16px; font-weight:700; font-family:Helvetica, sans-serif; color:#3c4858;" for="OPT_IN" data-required="*">Aceite dos termos</label>
+                <div class="entry__choice" style="">
+                  <label>
+                    <input type="checkbox" class="input_replaced" value="1" id="OPT_IN" name="OPT_IN" required />
+                    <span class="checkbox checkbox_tick_positive" style="margin-left:"></span><span style="font-size:14px; text-align:left; font-family:Helvetica, sans-serif; color:#3C4858; background-color:transparent;"><p>Ao enviar este formulário, autorizo o uso dos meus dados para contato relacionado ao projeto Forró H.A.U.S. e ao movimento #somosomovimento.</p></span>
+                  </label>
+                </div>
+              </div>
+              <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
+            </div>
+          </div>
+        </div>
+        <div style="padding: 8px 0;">
+          <div class="sib-form-block" style="text-align: left">
+            <button class="sib-form-block__button sib-form-block__button-with-loader" style="font-size:16px; text-align:left; font-weight:700; font-family:Helvetica, sans-serif; color:#FFFFFF; background-color:#3E4857; border-radius:3px; border-width:0px;" form="sib-form" type="submit">
+              <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512">
+                <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
+              </svg>
+              Enviar
+            </button>
+          </div>
+        </div>
+        <input type="text" name="email_address_check" value="" class="input--hidden">
+        <input type="hidden" name="locale" value="pt">
+      </form>
+    </div>
+  </div>
+</div>
+                <!-- END - Brevo Form -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== DOWNLOADS / NOSSA VISÃO ===== -->
+    <section class="downloads" id="downloads">
+        <div class="container">
+            <div class="section-label reveal" data-i18n="downloads_label">Imprensa & Downloads</div>
+            <h2 class="reveal" data-i18n="downloads_title">Nossa Visão em Detalhes</h2>
+            <p class="section-subtitle reveal" data-i18n="downloads_subtitle">Conheça nossos documentos de projeto. Cadastre-se pelo formulário acima para receber todos os documentos por e-mail.</p>
+            <div class="downloads-grid reveal">
+                <div class="download-card">
+                    <img src="images/cover_realidade.jpg" alt="Realidade. É Encontro." loading="lazy">
+                    <div class="download-card-body">
+                        <h3>Realidade. É Encontro.</h3>
+                        <p data-i18n="dl_realidade">Brochura principal do projeto</p>
+                    </div>
+                </div>
+                <div class="download-card">
+                    <img src="images/cover_impacto.jpg" alt="Impacto Social" loading="lazy">
+                    <div class="download-card-body">
+                        <h3>Impacto Social</h3>
+                        <p data-i18n="dl_impacto">Inclusão e desenvolvimento</p>
+                    </div>
+                </div>
+                <div class="download-card">
+                    <img src="images/cover_serra_azul.jpg" alt="Em Serra Azul" loading="lazy">
+                    <div class="download-card-body">
+                        <h3>Em Serra Azul</h3>
+                        <p data-i18n="dl_serra">Projeto para cidades</p>
+                    </div>
+                </div>
+                <div class="download-card">
+                    <img src="images/cover_gabriel.jpg" alt="A Jornada de Gabriel" loading="lazy">
+                    <div class="download-card-body">
+                        <h3>A Jornada de Gabriel</h3>
+                        <p data-i18n="dl_gabriel">A história de um artista</p>
+                    </div>
+                </div>
+                <div class="download-card">
+                    <img src="images/cover_valentina.jpg" alt="A Jornada de Valentina" loading="lazy">
+                    <div class="download-card-body">
+                        <h3>A Jornada de Valentina</h3>
+                        <p data-i18n="dl_valentina">A história de uma dançarina</p>
+                    </div>
+                </div>
+            </div>
+            <div class="downloads-cta reveal">
+                <a href="#formularios" class="btn btn-primary" data-i18n="downloads_btn">Cadastre-se para receber todos os documentos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== IMPRESSUM ===== -->
+    <section class="impressum" id="impressum">
+        <div class="container">
+            <h2>Impressum</h2>
+            <div class="impressum-content">
+                <p><strong>Angaben gemäß § 5 TMG</strong></p>
+                <p>Das Forró Haus e.V.<br>
+                Böblingerstrasse 86<br>
+                70199 Stuttgart<br>
+                Vereinsnummer: 725235</p>
+                
+                <h3>Vertreten durch</h3>
+                <p>Jaduam Omar Pasqualini</p>
+                
+                <h3>Kontakt</h3>
+                <p>Telefon: +49 (0) 177 599 5632<br>
+                E-Mail: <a href="mailto:info@forrohaus.org" style="color: var(--green);">info@forrohaus.org</a></p>
+                
+                <h3>Streitschlichtung</h3>
+                <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+                
+                <h3>Haftung für Inhalte</h3>
+                <p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+                
+                <h3>Haftung für Links</h3>
+                <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben.</p>
+                
+                <h3>Urheberrecht</h3>
+                <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer id="contato">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-logo">
+                    <img src="images/logo_white.png" alt="Forró Haus">
+                </div>
+                <div class="footer-hashtag">#somosomovimento</div>
+                <p class="footer-location" data-i18n="footer_location">Stuttgart, Alemanha — Recife, Brasil</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/forrohaus" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <a href="https://wa.me/5581996281332" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    </a>
+                    <a href="mailto:info@forrohaus.org" aria-label="E-Mail">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </a>
+                </div>
+                <p class="footer-contact">
+                    <a href="mailto:info@forrohaus.org">info@forrohaus.org</a> &nbsp;|&nbsp;
+                    <a href="tel:+4917759956320">+49 177 599 5632</a> &nbsp;|&nbsp;
+                    <a href="https://www.forrohaus.org" target="_blank">www.forrohaus.org</a>
+                </p>
+                <p class="footer-legal">
+                    &copy; 2026 Forró Haus e.V. — <span data-i18n="footer_rights">Todos os direitos reservados.</span>
+                    &nbsp;|&nbsp; <a href="#impressum">Impressum</a>
+                    &nbsp;|&nbsp; <a href="https://www.forrohaus.org/datenschutz" target="_blank">Datenschutz</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+      window.REQUIRED_CODE_ERROR_MESSAGE = 'Por favor, selecione um código de país.';
+      window.LOCALE = 'pt';
+      window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "Ocorreu um erro. Por favor, tente novamente.";
+      window.REQUIRED_ERROR_MESSAGE = "Este campo não pode ficar em branco.";
+      window.GENERIC_INVALID_MESSAGE = "Ocorreu um erro. Por favor, tente novamente.";
+      window.translation = {
+        common: {
+          selectedList: '{quantity} lista selecionada',
+          selectedLists: '{quantity} listas selecionadas',
+          selectedOption: '{quantity} selecionado',
+          selectedOptions: '{quantity} selecionados',
+        }
+      };
+      var AUTOHIDE = Boolean(0);
+    </script>
+    <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+
+    <script>
+    // ===== HEADER SCROLL =====
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // ===== REVEAL ON SCROLL =====
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ===== CLOSE MOBILE NAV ON CLICK =====
+    document.querySelectorAll('nav a').forEach(a => {
+        a.addEventListener('click', () => {
+            document.querySelector('nav').classList.remove('open');
+        });
+    });
+
+    // ===== MULTILINGUAL SYSTEM =====
+    const translations = {
+        pt: {
+            nav_encontro: "Encontro",
+            nav_movimento: "O Movimento",
+            nav_pilares: "5 Pilares",
+            nav_equipe: "Equipe",
+            nav_artistas: "Artistas",
+            nav_galeria: "Galeria",
+            nav_participar: "Participar",
+            nav_contato: "Contato",
+            hero_label: "Somos o Movimento",
+            hero_subline: "Infraestrutura cultural a serviço da sociedade",
+            hero_text: "Forró Haus constrói pontes entre artistas, comunidades e territórios através da música e dos encontros reais. Não somos uma plataforma. Somos um movimento de pessoas que acreditam na cultura como força transformadora.",
+            hero_btn1: "Quero participar",
+            hero_btn2: "Conheça o Projeto",
+            encontro_label: "Aconteceu",
+            encontro_title: "1º Encontro da União dos<br>Artistas Brasileiros",
+            encontro_date: "1 de março de 2026 — Museu Cais do Sertão, Recife",
+            encontro_p1: "Um momento histórico para o Forró e para a cultura brasileira. No dia 1º de março de 2026, reunimos no Museu Cais do Sertão, em Recife, alguns dos mais importantes músicos de Pernambuco e do Brasil.",
+            encontro_p2: "Jadu, Derico, Imogen, Clara e Naize apresentaram o projeto Forró Haus, incluindo uma peça teatral sobre a visão do movimento. Cada convidado recebeu uma bolsa com camiseta e documentos do projeto. A resposta foi unânime: entusiasmo e apoio total ao movimento.",
+            encontro_p3: "Este encontro marca o início de uma nova era para a cultura do Forró — uma era de profissionalismo, respeito e infraestrutura a serviço dos artistas e das comunidades.",
+            encontro_btn: "Faça parte do próximo encontro",
+            about_label: "O Movimento",
+            about_title: "Forró Haus",
+            about_p1: "De quinze anos de organização de eventos de Forró, brotou algo maduro: uma estrutura moldada por incontáveis encontros, aprendizados e responsabilidade compartilhada. Entendemos que artistas brasileiros não precisam só de um palco; precisam de um lugar onde sejam recebidos com respeito, carinho e profissionalismo.",
+            about_p2: "Assim se desenvolveu nossa organização, que une coração e estrutura — o melhor que o Brasil tem a oferecer, junto do que a Alemanha tem de melhor a oferecer = Forró Haus.",
+            about_quote: "\"A Forró Haus é uma vitrine da cultura brasileira no exterior, um ecossistema único onde dança, música, gastronomia e convivência se unem.\"",
+            about_p3: "Em um momento de instabilidade para a classe artística e de desconexão cultural, a Forró Haus e.V. surge como uma organização não lucrativa dedicada à criação de Centros Culturais autossustentáveis. Apresentamos um Brasil autêntico, protegendo nossa maior riqueza: o Forró e a criatividade dos Artistas.",
+            why_label: "Por que existe",
+            why_title: "Cultura precisa de<br>infraestrutura",
+            why_text: "Artistas que levam o forró para o mundo enfrentam condições precárias: sem estrutura, sem cachês dignos, sem suporte profissional. Comunidades que amam essa cultura muitas vezes não encontram espaços para se reunir, aprender e celebrar.",
+            why_h1: "Artistas sem estrutura",
+            why_p1: "Músicos e artistas precisam de condições dignas de trabalho, cachês justos e suporte profissional para levar sua arte além das fronteiras.",
+            why_h2: "Cultura precisa de base",
+            why_p2: "Sem infraestrutura, a cultura fica à mercê do improviso. Forró Haus cria as condições para que a música e o encontro aconteçam com qualidade.",
+            why_h3: "Movimento não para",
+            why_p3: "Queremos construir juntos, um movimento de pessoas reais, em territórios reais, com encontros verdadeiros.",
+            pilares_label: "Os 5 Pilares",
+            pilares_title: "A Estrutura do Forró Haus",
+            pilares_subtitle: "Cada Forró Haus é composto por cinco pilares integrados que criam um ecossistema cultural autossustentável.",
+            pilar_centro_h: "Centro Cultural",
+            pilar_centro_p: "Escola de dança, música, capoeira e atividades culturais para todas as idades.",
+            pilar_eventos_h: "Casa de Eventos",
+            pilar_eventos_p: "Espaço profissional para shows, festivais e encontros culturais.",
+            pilar_restaurante_h: "Restaurante",
+            pilar_restaurante_p: "Gastronomia brasileira autêntica como parte da experiência cultural.",
+            pilar_pousada_h: "Pousada",
+            pilar_pousada_p: "Hospedagem cultural para artistas e visitantes com conforto e acolhimento.",
+            pilar_estudio_h: "Estúdio",
+            pilar_estudio_p: "Produção audiovisual, podcasts e registro da memória cultural.",
+            equipe_label: "Nossa Equipe",
+            equipe_title: "As pessoas por trás do movimento",
+            equipe_subtitle: "Uma equipe internacional unida pela paixão pela cultura brasileira.",
+            equipe_jadu_role: "Fundador & Diretor",
+            equipe_derico_role: "Músico & Articulador Cultural",
+            equipe_imogen_role: "Estrategista & Co-Fundadora",
+            equipe_clara_role: "Terapeuta & Co-Fundadora",
+            artistas_label: "Apoio dos Artistas",
+            artistas_title: "Artistas que Apoiam o Movimento",
+            artistas_subtitle: "Músicos e artistas de todo o Brasil que acreditam na nossa visão e apoiam o Forró Haus.",
+            galeria_label: "Galeria",
+            galeria_title: "Encontros que Transformam",
+            galeria_subtitle: "Momentos reais de música, dança e comunidade na Forró Haus.",
+            galeria_btn: "Veja mais no Instagram",
+            paths_label: "Três caminhos para participar",
+            paths_title: "Faça parte do movimento",
+            paths_intro: "Escolha como você quer se conectar com o Forró Haus",
+            path_artistas_h: "Artistas",
+            path_artistas_p: "Você é músico, dançarino ou produtor? Descubra como o Forró Haus oferece estrutura, cachês dignos e suporte profissional para levar sua arte para o mundo.",
+            path_artistas_btn: "Saber mais",
+            path_parceiros_h: "Parceiros & Cidades",
+            path_parceiros_p: "Investidores, gestores públicos e comunidades: vamos construir juntos um Forró Haus em sua região. Conheça as oportunidades de parceria.",
+            path_parceiros_btn: "Participar",
+            path_comunidade_h: "Comunidade",
+            path_comunidade_p: "Dançarinos, forrozeiros e curiosos: fique por dentro do movimento, receba novidades e descubra como participar dos nossos encontros e eventos.",
+            path_comunidade_btn: "Participar",
+            form_label: "Fique por dentro",
+            form_title: "Faça parte do #somosomovimento",
+            downloads_label: "Imprensa & Downloads",
+            downloads_title: "Nossa Visão em Detalhes",
+            downloads_subtitle: "Conheça nossos documentos de projeto. Cadastre-se pelo formulário acima para receber todos os documentos por e-mail.",
+            dl_realidade: "Brochura principal do projeto",
+            dl_impacto: "Inclusão e desenvolvimento",
+            dl_serra: "Projeto para cidades",
+            dl_gabriel: "A história de um artista",
+            dl_valentina: "A história de uma dançarina",
+            downloads_btn: "Cadastre-se para receber todos os documentos",
+            footer_location: "Stuttgart, Alemanha — Recife, Brasil",
+            footer_rights: "Todos os direitos reservados."
+        },
+        de: {
+            nav_encontro: "Treffen",
+            nav_movimento: "Die Bewegung",
+            nav_pilares: "5 Säulen",
+            nav_equipe: "Team",
+            nav_artistas: "Künstler",
+            nav_galeria: "Galerie",
+            nav_participar: "Mitmachen",
+            nav_contato: "Kontakt",
+            hero_label: "Wir sind die Bewegung",
+            hero_subline: "Kulturelle Infrastruktur im Dienst der Gesellschaft",
+            hero_text: "Forró Haus baut Brücken zwischen Künstlern, Gemeinschaften und Regionen durch Musik und echte Begegnungen. Wir sind keine Plattform. Wir sind eine Bewegung von Menschen, die an Kultur als transformative Kraft glauben.",
+            hero_btn1: "Ich will mitmachen",
+            hero_btn2: "Projekt entdecken",
+            encontro_label: "Es ist passiert",
+            encontro_title: "1. Treffen der Vereinigung<br>brasilianischer Künstler",
+            encontro_date: "1. März 2026 — Museu Cais do Sertão, Recife",
+            encontro_p1: "Ein historischer Moment für den Forró und die brasilianische Kultur. Am 1. März 2026 versammelten wir im Museu Cais do Sertão in Recife einige der wichtigsten Musiker Pernambucos und Brasiliens.",
+            encontro_p2: "Jadu, Derico, Imogen, Clara und Naize stellten das Forró Haus Projekt vor, einschließlich eines Theaterstücks über die Vision der Bewegung. Jeder Gast erhielt eine Tasche mit T-Shirt und Projektdokumenten. Die Reaktion war einstimmig: Begeisterung und volle Unterstützung für die Bewegung.",
+            encontro_p3: "Dieses Treffen markiert den Beginn einer neuen Ära für die Forró-Kultur — eine Ära des Professionalismus, des Respekts und der Infrastruktur im Dienst der Künstler und Gemeinschaften.",
+            encontro_btn: "Beim nächsten Treffen dabei sein",
+            about_label: "Die Bewegung",
+            about_title: "Forró Haus",
+            about_p1: "Aus fünfzehn Jahren Forró-Veranstaltungsorganisation ist etwas Reifes gewachsen: eine Struktur, geformt durch unzählige Begegnungen, Lernerfahrungen und geteilte Verantwortung. Wir haben verstanden, dass brasilianische Künstler nicht nur eine Bühne brauchen; sie brauchen einen Ort, an dem sie mit Respekt, Herzlichkeit und Professionalität empfangen werden.",
+            about_p2: "So hat sich unsere Organisation entwickelt, die Herz und Struktur vereint — das Beste, was Brasilien zu bieten hat, zusammen mit dem Besten, was Deutschland zu bieten hat = Forró Haus.",
+            about_quote: "\"Das Forró Haus ist ein Schaufenster der brasilianischen Kultur im Ausland, ein einzigartiges Ökosystem, in dem Tanz, Musik, Gastronomie und Zusammenleben sich vereinen.\"",
+            about_p3: "In einer Zeit der Instabilität für die Künstlerschaft und kultureller Entfremdung entsteht der Forró Haus e.V. als gemeinnützige Organisation, die sich der Schaffung selbsttragender Kulturzentren widmet. Wir präsentieren ein authentisches Brasilien und schützen unseren größten Reichtum: den Forró und die Kreativität der Künstler.",
+            why_label: "Warum es uns gibt",
+            why_title: "Kultur braucht<br>Infrastruktur",
+            why_text: "Künstler, die den Forró in die Welt tragen, stehen vor prekären Bedingungen: ohne Struktur, ohne faire Gagen, ohne professionelle Unterstützung. Gemeinschaften, die diese Kultur lieben, finden oft keine Räume zum Zusammenkommen, Lernen und Feiern.",
+            why_h1: "Künstler ohne Struktur",
+            why_p1: "Musiker und Künstler brauchen würdige Arbeitsbedingungen, faire Gagen und professionelle Unterstützung, um ihre Kunst über Grenzen hinaus zu tragen.",
+            why_h2: "Kultur braucht eine Basis",
+            why_p2: "Ohne Infrastruktur ist Kultur dem Zufall überlassen. Forró Haus schafft die Bedingungen, damit Musik und Begegnung in Qualität stattfinden können.",
+            why_h3: "Die Bewegung hört nicht auf",
+            why_p3: "Wir wollen gemeinsam aufbauen, eine Bewegung von echten Menschen, an echten Orten, mit echten Begegnungen.",
+            pilares_label: "Die 5 Säulen",
+            pilares_title: "Die Struktur des Forró Haus",
+            pilares_subtitle: "Jedes Forró Haus besteht aus fünf integrierten Säulen, die ein selbsttragendes kulturelles Ökosystem bilden.",
+            pilar_centro_h: "Kulturzentrum",
+            pilar_centro_p: "Schule für Tanz, Musik, Capoeira und kulturelle Aktivitäten für alle Altersgruppen.",
+            pilar_eventos_h: "Veranstaltungshaus",
+            pilar_eventos_p: "Professioneller Raum für Shows, Festivals und kulturelle Begegnungen.",
+            pilar_restaurante_h: "Restaurant",
+            pilar_restaurante_p: "Authentische brasilianische Gastronomie als Teil des kulturellen Erlebnisses.",
+            pilar_pousada_h: "Gästehaus",
+            pilar_pousada_p: "Kulturelle Unterkunft für Künstler und Besucher mit Komfort und Herzlichkeit.",
+            pilar_estudio_h: "Studio",
+            pilar_estudio_p: "Audiovisuelle Produktion, Podcasts und Dokumentation des kulturellen Gedächtnisses.",
+            equipe_label: "Unser Team",
+            equipe_title: "Die Menschen hinter der Bewegung",
+            equipe_subtitle: "Ein internationales Team, vereint durch die Leidenschaft für brasilianische Kultur.",
+            equipe_jadu_role: "Gründer & Direktor",
+            equipe_derico_role: "Musiker & Kulturvermittler",
+            equipe_imogen_role: "Strategin & Mitgründerin",
+            equipe_clara_role: "Therapeutin & Mitgründerin",
+            artistas_label: "Unterstützung der Künstler",
+            artistas_title: "Künstler, die die Bewegung unterstützen",
+            artistas_subtitle: "Musiker und Künstler aus ganz Brasilien, die an unsere Vision glauben und das Forró Haus unterstützen.",
+            galeria_label: "Galerie",
+            galeria_title: "Begegnungen, die verändern",
+            galeria_subtitle: "Echte Momente von Musik, Tanz und Gemeinschaft im Forró Haus.",
+            galeria_btn: "Mehr auf Instagram",
+            paths_label: "Drei Wege zum Mitmachen",
+            paths_title: "Werde Teil der Bewegung",
+            paths_intro: "Wähle, wie du dich mit dem Forró Haus verbinden möchtest",
+            path_artistas_h: "Künstler",
+            path_artistas_p: "Du bist Musiker, Tänzer oder Produzent? Entdecke, wie das Forró Haus Struktur, faire Gagen und professionelle Unterstützung bietet, um deine Kunst in die Welt zu tragen.",
+            path_artistas_btn: "Mehr erfahren",
+            path_parceiros_h: "Partner & Städte",
+            path_parceiros_p: "Investoren, öffentliche Verwaltungen und Gemeinschaften: Lasst uns gemeinsam ein Forró Haus in eurer Region aufbauen. Entdeckt die Partnerschaftsmöglichkeiten.",
+            path_parceiros_btn: "Mitmachen",
+            path_comunidade_h: "Gemeinschaft",
+            path_comunidade_p: "Tänzer, Forrozeiros und Neugierige: Bleib auf dem Laufenden, erhalte Neuigkeiten und erfahre, wie du an unseren Treffen und Events teilnehmen kannst.",
+            path_comunidade_btn: "Mitmachen",
+            form_label: "Bleib informiert",
+            form_title: "Werde Teil von #somosomovimento",
+            downloads_label: "Presse & Downloads",
+            downloads_title: "Unsere Vision im Detail",
+            downloads_subtitle: "Entdecke unsere Projektdokumente. Registriere dich über das Formular oben, um alle Dokumente per E-Mail zu erhalten.",
+            dl_realidade: "Hauptbroschüre des Projekts",
+            dl_impacto: "Inklusion und Entwicklung",
+            dl_serra: "Projekt für Städte",
+            dl_gabriel: "Die Geschichte eines Künstlers",
+            dl_valentina: "Die Geschichte einer Tänzerin",
+            downloads_btn: "Registriere dich, um alle Dokumente zu erhalten",
+            footer_location: "Stuttgart, Deutschland — Recife, Brasilien",
+            footer_rights: "Alle Rechte vorbehalten."
+        },
+        en: {
+            nav_encontro: "Meeting",
+            nav_movimento: "The Movement",
+            nav_pilares: "5 Pillars",
+            nav_equipe: "Team",
+            nav_artistas: "Artists",
+            nav_galeria: "Gallery",
+            nav_participar: "Join",
+            nav_contato: "Contact",
+            hero_label: "We Are the Movement",
+            hero_subline: "Cultural infrastructure at the service of society",
+            hero_text: "Forró Haus builds bridges between artists, communities and territories through music and real encounters. We are not a platform. We are a movement of people who believe in culture as a transformative force.",
+            hero_btn1: "I want to join",
+            hero_btn2: "Discover the Project",
+            encontro_label: "It happened",
+            encontro_title: "1st Meeting of the Union of<br>Brazilian Artists",
+            encontro_date: "March 1, 2026 — Museu Cais do Sertão, Recife",
+            encontro_p1: "A historic moment for Forró and Brazilian culture. On March 1, 2026, we gathered at the Museu Cais do Sertão in Recife some of the most important musicians from Pernambuco and Brazil.",
+            encontro_p2: "Jadu, Derico, Imogen, Clara and Naize presented the Forró Haus project, including a theatrical play about the movement's vision. Each guest received a bag with a t-shirt and project documents. The response was unanimous: enthusiasm and full support for the movement.",
+            encontro_p3: "This meeting marks the beginning of a new era for Forró culture — an era of professionalism, respect and infrastructure at the service of artists and communities.",
+            encontro_btn: "Be part of the next meeting",
+            about_label: "The Movement",
+            about_title: "Forró Haus",
+            about_p1: "From fifteen years of organizing Forró events, something mature has grown: a structure shaped by countless encounters, learning experiences and shared responsibility. We understood that Brazilian artists don't just need a stage; they need a place where they are welcomed with respect, warmth and professionalism.",
+            about_p2: "This is how our organization developed, uniting heart and structure — the best Brazil has to offer, together with the best Germany has to offer = Forró Haus.",
+            about_quote: "\"Forró Haus is a showcase of Brazilian culture abroad, a unique ecosystem where dance, music, gastronomy and community come together.\"",
+            about_p3: "In a time of instability for the artistic class and cultural disconnection, Forró Haus e.V. emerges as a non-profit organization dedicated to creating self-sustaining Cultural Centers. We present an authentic Brazil, protecting our greatest wealth: Forró and the creativity of Artists.",
+            why_label: "Why we exist",
+            why_title: "Culture needs<br>infrastructure",
+            why_text: "Artists who bring forró to the world face precarious conditions: no structure, no fair fees, no professional support. Communities that love this culture often cannot find spaces to gather, learn and celebrate.",
+            why_h1: "Artists without structure",
+            why_p1: "Musicians and artists need dignified working conditions, fair fees and professional support to take their art beyond borders.",
+            why_h2: "Culture needs a foundation",
+            why_p2: "Without infrastructure, culture is left to chance. Forró Haus creates the conditions for music and encounters to happen with quality.",
+            why_h3: "The movement doesn't stop",
+            why_p3: "We want to build together, a movement of real people, in real places, with real encounters.",
+            pilares_label: "The 5 Pillars",
+            pilares_title: "The Structure of Forró Haus",
+            pilares_subtitle: "Each Forró Haus consists of five integrated pillars that create a self-sustaining cultural ecosystem.",
+            pilar_centro_h: "Cultural Center",
+            pilar_centro_p: "School for dance, music, capoeira and cultural activities for all ages.",
+            pilar_eventos_h: "Event House",
+            pilar_eventos_p: "Professional space for shows, festivals and cultural encounters.",
+            pilar_restaurante_h: "Restaurant",
+            pilar_restaurante_p: "Authentic Brazilian gastronomy as part of the cultural experience.",
+            pilar_pousada_h: "Guesthouse",
+            pilar_pousada_p: "Cultural accommodation for artists and visitors with comfort and warmth.",
+            pilar_estudio_h: "Studio",
+            pilar_estudio_p: "Audiovisual production, podcasts and documentation of cultural memory.",
+            equipe_label: "Our Team",
+            equipe_title: "The people behind the movement",
+            equipe_subtitle: "An international team united by the passion for Brazilian culture.",
+            equipe_jadu_role: "Founder & Director",
+            equipe_derico_role: "Musician & Cultural Liaison",
+            equipe_imogen_role: "Strategist & Co-Founder",
+            equipe_clara_role: "Therapist & Co-Founder",
+            artistas_label: "Artist Support",
+            artistas_title: "Artists Supporting the Movement",
+            artistas_subtitle: "Musicians and artists from all over Brazil who believe in our vision and support Forró Haus.",
+            galeria_label: "Gallery",
+            galeria_title: "Encounters that Transform",
+            galeria_subtitle: "Real moments of music, dance and community at Forró Haus.",
+            galeria_btn: "See more on Instagram",
+            paths_label: "Three ways to participate",
+            paths_title: "Be part of the movement",
+            paths_intro: "Choose how you want to connect with Forró Haus",
+            path_artistas_h: "Artists",
+            path_artistas_p: "Are you a musician, dancer or producer? Discover how Forró Haus offers structure, fair fees and professional support to take your art to the world.",
+            path_artistas_btn: "Learn more",
+            path_parceiros_h: "Partners & Cities",
+            path_parceiros_p: "Investors, public administrators and communities: let's build a Forró Haus in your region together. Discover partnership opportunities.",
+            path_parceiros_btn: "Join",
+            path_comunidade_h: "Community",
+            path_comunidade_p: "Dancers, forrozeiros and curious minds: stay up to date, receive news and discover how to participate in our meetings and events.",
+            path_comunidade_btn: "Join",
+            form_label: "Stay informed",
+            form_title: "Be part of #somosomovimento",
+            downloads_label: "Press & Downloads",
+            downloads_title: "Our Vision in Detail",
+            downloads_subtitle: "Explore our project documents. Register through the form above to receive all documents by email.",
+            dl_realidade: "Main project brochure",
+            dl_impacto: "Inclusion and development",
+            dl_serra: "Project for cities",
+            dl_gabriel: "The story of an artist",
+            dl_valentina: "The story of a dancer",
+            downloads_btn: "Register to receive all documents",
+            footer_location: "Stuttgart, Germany — Recife, Brazil",
+            footer_rights: "All rights reserved."
+        }
+    };
+
+    let currentLang = 'pt';
+
+    function setLang(lang) {
+        currentLang = lang;
+        document.documentElement.lang = lang === 'pt' ? 'pt-BR' : lang;
+        
+        // Update active button
+        document.querySelectorAll('.lang-switcher button').forEach(btn => btn.classList.remove('active'));
+        document.getElementById('lang-' + lang).classList.add('active');
+        
+        // Update all translatable elements
+        const t = translations[lang];
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (t[key]) {
+                el.innerHTML = t[key];
+            }
+        });
+        document.querySelectorAll('[data-i18n-html]').forEach(el => {
+            const key = el.getAttribute('data-i18n-html');
+            if (key === 'paths_social') {
+                const texts = {
+                    pt: 'Siga-nos nas redes sociais e ajude-nos a construir um Forró Haus também na sua cidade! <a href="https://www.instagram.com/forrohaus" target="_blank" rel="noopener noreferrer">@forrohaus</a>',
+                    de: 'Folge uns in den sozialen Medien und hilf uns, ein Forró Haus auch in deiner Stadt aufzubauen! <a href="https://www.instagram.com/forrohaus" target="_blank" rel="noopener noreferrer">@forrohaus</a>',
+                    en: 'Follow us on social media and help us build a Forró Haus in your city too! <a href="https://www.instagram.com/forrohaus" target="_blank" rel="noopener noreferrer">@forrohaus</a>'
+                };
+                el.innerHTML = texts[lang];
+            }
+            if (key === 'form_subtitle') {
+                const texts = {
+                    pt: 'Deixe seus dados para receber novidades sobre o movimento, próximos encontros e oportunidades. Ou entre em contato pelo WhatsApp: <a href="https://wa.me/5581996281332" style="color:#2d6a4f; font-weight:700;">+55 81 99628-1332</a>',
+                    de: 'Hinterlasse deine Daten, um Neuigkeiten über die Bewegung, kommende Treffen und Möglichkeiten zu erhalten. Oder kontaktiere uns per WhatsApp: <a href="https://wa.me/5581996281332" style="color:#2d6a4f; font-weight:700;">+55 81 99628-1332</a>',
+                    en: 'Leave your details to receive news about the movement, upcoming meetings and opportunities. Or contact us via WhatsApp: <a href="https://wa.me/5581996281332" style="color:#2d6a4f; font-weight:700;">+55 81 99628-1332</a>'
+                };
+                el.innerHTML = texts[lang];
+            }
+        });
+
+        // Save preference
+        localStorage.setItem('fh_lang', lang);
+    }
+
+    // Load saved language preference
+    const savedLang = localStorage.getItem('fh_lang');
+    if (savedLang && translations[savedLang]) {
+        setLang(savedLang);
+    }
+    </script>
+
+</body>
+</html>
